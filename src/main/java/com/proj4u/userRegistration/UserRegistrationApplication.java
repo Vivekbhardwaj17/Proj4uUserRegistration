@@ -1,13 +1,31 @@
 package com.proj4u.userRegistration;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 
 @SpringBootApplication
+@RestController
 public class UserRegistrationApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserRegistrationApplication.class, args);
+
+	}
+
+	@GetMapping("/getlogs")
+	public String getLogs(){
+		Logger log = LoggerFactory.getLogger(UserRegistrationApplication.class);
+		log.info("log started...");
+		log.debug("log in between");
+		log.debug("Running run method");
+		return "logs";
 	}
 
 }
